@@ -1,0 +1,305 @@
+body{
+    background-color: red;
+}
+
+img{
+    width:10em;
+    height: 10em;
+}
+
+#container{
+    display: grid;
+    gap:1em;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-areas:
+    "upper_left upper_left"
+    "left right"
+    "lower_left lower_right";
+}
+
+#display{
+    background-color:lightgray;
+    border:1em solid white;
+    border-radius: 5px 5px 0px 5px;
+    text-align: center;
+    width: 50%;
+    position: relative;
+    top:12.5%;
+    left:12.5%;
+    display: flex;
+    flex-direction: row;
+}
+
+#left{
+    grid-area: "left";
+    padding: auto;
+    border:0.1em solid black;
+}
+
+#right{
+    grid-area: "right";
+    padding: auto;
+    display: flex;
+    flex-direction: column;
+    border:0.1em solid black;
+    border-radius: 5px;
+    align-items: center;
+}
+
+#small_display{
+    background-color: gray;
+    border-radius: 5px;
+    width: 10em;
+    height: 100%;
+    margin-bottom: 1em;
+    text-align: center;
+    font-size: x-large;
+    border:0.1em solid black;
+}
+
+#buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.blue_button{
+
+    border-radius: 5px;
+    border:0.1em solid black;
+    margin: 0;
+    background-color:cyan;
+    width: 3em;
+    height: 3em;
+
+}
+
+.blue_button:hover{
+    background-color: lightblue;
+}
+
+#upper_left{
+    grid-area: "upper_left";
+    display: flex;
+    justify-content: flex-start;
+    border:0.1em solid black;
+    border-radius: 5px;
+}
+
+#big_ball{
+    animation: changeColor 0.5s infinite alternate;
+    border-radius: 50px;
+    border:0.3em solid white;
+    width: 3em;
+    height: 3em;
+}
+
+.small{
+    width:1em;
+    height: 1em;
+    margin: 0.5em;
+    border:0.1em solid black;
+    border-radius: 20px;
+}
+
+.red{
+    animation: changeRed 1s infinite alternate;
+}
+
+@keyframes changeRed {
+    0% {
+        background-color: red;
+    }
+    50% {
+        background-color: green;
+    }
+    100%{
+        background-color: yellow;
+    }
+
+}
+
+.green{
+    animation: changeGreen 1s infinite alternate;
+}
+
+@keyframes changeGreen {
+    0% {
+        background-color: green;
+    }
+    50% {
+        background-color: yellow;
+    }
+    100%{
+        background-color: red;
+    }
+
+}
+
+.yellow{
+    animation: changeYellow 1s infinite alternate;
+}
+
+@keyframes changeYellow {
+    0% {
+        background-color: yellow;
+    }
+    50% {
+        background-color: red;
+    }
+    100%{
+        background-color: green;
+    }
+
+}
+
+.ind_blue{
+    animation: indBlue  0.5s infinite alternate;
+}
+
+@keyframes indBlue {
+    from{
+        background-color: blue;
+    }
+    to{
+        background-color: red;
+    }
+}
+
+@keyframes indRed {
+    from{
+        background-color: red;
+    }
+    to{
+        background-color: blue;
+    }
+}
+.ind_red{
+    animation: indRed 0.5s infinite alternate;
+}
+
+#lower_left{
+    grid-area:"lower_left";
+    display: flex;
+    flex-direction: column;
+    border:0.1em solid black;
+    border-radius: 5px;
+    padding: 1em;
+}
+
+#button_and_indicator{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.indicator{
+    width:3em;
+    border-radius: 5px;
+    height: 0.5em;
+    margin-left: 1em;
+    border: 0.1em solid black;
+}
+
+#nav_and_display{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#name_display{
+    background-color: yellowgreen;
+    border-radius: 5px;
+    width:25%;
+    height: 3em;
+    text-align: center;
+    border:0.1em solid black;
+}
+
+#shiny_button{
+    border-radius: 50px;
+    border:0.3em solid black;
+    width: 3em;
+    height: 3em;
+    background-color: gray;
+}
+
+#shiny_button:hover{
+    background-color: lightgray;
+}
+
+.nav_button{
+    width:1em;
+    height:1em;
+    background-color: gray; 
+}
+
+#nav{
+    display:grid;
+    width: 3em;
+    height: 3em;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    margin: 0.1em;
+}
+
+.blank{
+    height: 1em;
+    width:1em;
+}
+
+.center_piece{
+    background-color: gray;
+}
+
+#up_button{
+    border-top: 0.1em solid black;
+    border-left: 0.1em solid black;
+    border-right: 0.1em solid black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.nav_button:hover{
+    background-color: lightgray;
+}
+
+#right_button{
+    border-top: 0.1em solid black;
+    border-right: 0.1em solid black;
+    border-bottom: 0.1em solid black;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#left_button{
+    border-top: 0.1em solid black;
+    border-left: 0.1em solid black;
+    border-bottom: 0.1em solid black;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#down_button{
+    border-bottom: 0.1em solid black;
+    border-right: 0.1em solid black;
+    border-left: 0.1em solid black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+@keyframes changeColor {
+    from {
+        background-color: cyan;
+    }
+    to {
+        background-color: lightblue;
+    }
+}
+
+
+
+
+
+  
