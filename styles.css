@@ -1,3 +1,5 @@
+
+/*Global rules*/
 body{
     background-color: red;
     font-family: 'Prompt', sans-serif;
@@ -8,21 +10,42 @@ img{
     height: 10em;
 }
 
+a{
+    text-decoration: none;
+    color:white;
+}
+
+a:hover{
+    text-decoration: none;
+    color:gray;
+}
+
+a:visited{
+    text-decoration: none;
+    color:lightgray;
+}
+
+/*Stand alone rules for layout markup*/
 #container{
     display: grid;
     gap:1em;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 0.5fr 2fr 1fr;
-    grid-template-areas:
-    "upper_left upper_left"
-    "left right"
-    "lower_left lower_right";
+
 }
 
+#upper_left{
+    display: flex;
+    justify-content: flex-start;
+    border:0.1em solid black;
+    border-radius: 5px;
+    box-shadow:  0.1em 0.1em 0.1em 0.1em black;
+}
+
+/*There is no upper_right*/
 
 #left{
-    grid-area: "left";
-    padding: auto;
+padding: auto;
     border:0.1em solid black;
     border-radius: 5px;
     box-shadow:  0.1em 0.1em 0.1em 0.1em black;
@@ -31,6 +54,74 @@ img{
     align-items: center;
 }
 
+#right{
+    padding-top:2em;
+    padding: auto;
+    display: flex;
+    flex-direction: column;
+    border:0.1em solid black;
+    border-radius: 5px;
+    align-items: center;
+    box-shadow:  0.1em 0.1em 0.1em 0.1em black;
+}
+
+
+#lower_left{
+    display: flex;
+    flex-direction: column;
+    border:0.1em solid black;
+    border-radius: 5px;
+    padding: 1em;
+    box-shadow:  0.1em 0.1em 0.1em 0.1em black;
+}
+
+#lower_right{
+    display:flex;
+    flex-direction: column;
+    box-shadow:  0.1em 0.1em 0.1em 0.1em black;
+    border:0.1em solid black;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+/*Other markup*/
+#button_and_indicator{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.indicator{
+    width:3em;
+    border-radius: 5px;
+    height: 0.5em;
+    margin-left: 1em;
+    border: 0.1em solid black;
+}
+
+#nav_and_display{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#button_and_dot{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#nav{
+    display:grid;
+    width: 3em;
+    height: 3em;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    margin: 0.1em;
+}
+
+/*Display rules*/
 #display{
     background-color:lightgray;
     border:1em solid white;
@@ -40,20 +131,6 @@ img{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-}
-
-
-
-#right{
-    padding-top:2em;
-    grid-area: "right";
-    padding: auto;
-    display: flex;
-    flex-direction: column;
-    border:0.1em solid black;
-    border-radius: 5px;
-    align-items: center;
-    box-shadow:  0.1em 0.1em 0.1em 0.1em black;
 }
 
 #small_display{
@@ -70,6 +147,24 @@ img{
     justify-content: center;
 }
 
+#name_display{
+    background-color: yellowgreen;
+    border-radius: 5px;
+    width:40%;
+    height: 3em;
+    text-align: center;
+    border:0.1em solid black;
+    
+}
+
+#name{
+    padding-top:0.7em;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+/*Button rules*/
 #buttons{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -91,15 +186,88 @@ img{
     background-color: lightblue;
 }
 
-#upper_left{
-    grid-area: "upper_left";
-    display: flex;
-    justify-content: flex-start;
-    border:0.1em solid black;
-    border-radius: 5px;
-    box-shadow:  0.1em 0.1em 0.1em 0.1em black;
+#shiny_button{
+    border-radius: 50px;
+    border:0.3em solid black;
+    width: 3em;
+    height: 3em;
+    background-color: gray;
 }
 
+#shiny_button:hover{
+    background-color: lightgray;
+}
+
+.nav_button{
+    width:1em;
+    height:1em;
+    background-color: gray; 
+    
+}
+
+.nav_button:hover{
+    background-color: lightgray;
+    box-shadow: 0em 0em 0em 0em black;
+}
+
+
+#up_button{
+    border-top: 0.1em solid black;
+    border-left: 0.1em solid black;
+    border-right: 0.1em solid black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow:  0.1em 0em 0em 0em black;
+}
+
+
+#right_button{
+    border-top: 0.1em solid black;
+    border-right: 0.1em solid black;
+    border-bottom: 0.1em solid black;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow:  0.1em 0.1em 0em 0em black;
+}
+
+#left_button{
+    border-top: 0.1em solid black;
+    border-left: 0.1em solid black;
+    border-bottom: 0.1em solid black;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow:  0em 0.1em 0em 0em black;
+}
+
+#down_button{
+    border-bottom: 0.1em solid black;
+    border-right: 0.1em solid black;
+    border-left: 0.1em solid black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow:  0.1em 0.1em 0em 0em black;
+}
+
+#white_buttons{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.white_button{
+    background-color: white;
+    height: 2em;
+    width: 2em;
+    margin: 0.01em;
+    border: 0.1em solid black;
+    border-radius: 5px;
+}
+
+.white_button:hover{
+    background-color: antiquewhite;
+}
+
+/*Animated divs*/
 #big_ball{
     animation: changeColor 0.5s infinite alternate;
     border-radius: 50px;
@@ -176,16 +344,6 @@ img{
 
 }
 
-#lower_left{
-    grid-area:"lower_left";
-    display: flex;
-    flex-direction: column;
-    border:0.1em solid black;
-    border-radius: 5px;
-    padding: 1em;
-    box-shadow:  0.1em 0.1em 0.1em 0.1em black;
-}
-
 .ind_blue{
     animation: indBlue  0.5s infinite alternate;
 }
@@ -212,71 +370,24 @@ img{
     }
 }
 
-#button_and_indicator{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-}
-
-.indicator{
-    width:3em;
-    border-radius: 5px;
-    height: 0.5em;
-    margin-left: 1em;
-    border: 0.1em solid black;
-}
-
-#nav_and_display{
-    display:flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
-
-#name_display{
-    background-color: yellowgreen;
-    border-radius: 5px;
-    width:40%;
-    height: 3em;
-    text-align: center;
-    border:0.1em solid black;
-    
-}
-
-#name{
-    padding-top:0.7em;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
-}
-
-#shiny_button{
+#dot{
     border-radius: 50px;
-    border:0.3em solid black;
-    width: 3em;
-    height: 3em;
-    background-color: gray;
+    animation: dotYellow 0.5s infinite alternate;
+    width: 2em;
+    height: 2em;
+    border:0.1em solid black;
 }
 
-#shiny_button:hover{
-    background-color: lightgray;
+@keyframes dotYellow{
+    from{
+        background-color: yellow;
+    }
+    to{
+        background-color: greenyellow;
+    }
 }
 
-.nav_button{
-    width:1em;
-    height:1em;
-    background-color: gray; 
-    
-}
-
-#nav{
-    display:grid;
-    width: 3em;
-    height: 3em;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(3,1fr);
-    margin: 0.1em;
-}
-
+/*Misc*/
 .blank{
     height: 1em;
     width:1em;
@@ -286,89 +397,7 @@ img{
     background-color: gray;
 }
 
-#up_button{
-    border-top: 0.1em solid black;
-    border-left: 0.1em solid black;
-    border-right: 0.1em solid black;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    box-shadow:  0.1em 0em 0em 0em black;
-}
-
-.nav_button:hover{
-    background-color: lightgray;
-    box-shadow: 0em 0em 0em 0em black;
-}
-
-#right_button{
-    border-top: 0.1em solid black;
-    border-right: 0.1em solid black;
-    border-bottom: 0.1em solid black;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    box-shadow:  0.1em 0.1em 0em 0em black;
-}
-
-#left_button{
-    border-top: 0.1em solid black;
-    border-left: 0.1em solid black;
-    border-bottom: 0.1em solid black;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    box-shadow:  0em 0.1em 0em 0em black;
-}
-
-#down_button{
-    border-bottom: 0.1em solid black;
-    border-right: 0.1em solid black;
-    border-left: 0.1em solid black;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    box-shadow:  0.1em 0.1em 0em 0em black;
-}
-
-#lower_right{
-    display:flex;
-    flex-direction: column;
-    box-shadow:  0.1em 0.1em 0.1em 0.1em black;
-    border:0.1em solid black;
-    border-radius: 10px;
-    padding: 1em;
-}
-
-#button_and_dot{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-#dot{
-    border-radius: 50px;
-    background-color: yellow;
-    width: 2em;
-    height: 2em;
-    border:0.1em solid black;
-}
-
-#white_buttons{
-    display: flex;
-    flex-direction: row;
-    
-}
-
-.white_button{
-    background-color: white;
-    height: 2em;
-    width: 2em;
-    margin: 0.01em;
-    border: 0.1em solid black;
-    border-radius: 5px;
-}
-
-.white_button:hover{
-    background-color: antiquewhite;
-}
-
+/*Type boxes*/
 #typings{
     display:flex;
     justify-content: space-evenly;
@@ -396,71 +425,92 @@ img{
     background-color: antiquewhite;
     color:black;
 }
+
 .fire{
     background-color: red;
 }
+
 .water{
     background-color: blue;
 }
+
 .grass{
     background-color: green;
 }
+
 .electric{
     background-color: yellow;
     color:black;
 }
+
 .ice{
     background-color: lightblue;
     color:black;
 }
+
 .fighting{
     background-color: brown;
 }
+
 .poison{
     background-color: purple;
 }
+
 .ground{
     background-color: burlywood;
     color:black;
 }
+
 .flying{
     background-color: lightcyan;
     color:black;
 }
+
 .psychic{
     background-color: pink;
 }
+
 .bug{
     background-color: greenyellow;
     color:black;
 }
+
 .rock{
     background-color: coral;
 }
+
 .ghost{
     background-color: blueviolet;
 }
+
 .dark{
     background-color: black;
 }
+
 .dragon{
     background-color: plum;
     color:black;
 }
+
 .steel{
     background-color: silver;
     color:black;
 }
+
 .fairy{
     background-color: lightpink;
     color:black;
 }
+
 .none{
     background-color: gray;
     color:black;
 }
 
+/*Mobile first rules*/
 @media only screen and (max-width: 992px) {
+
+    /*Global rules*/
     body{
         font-size: xx-large;
         touch-action: manipulation;
@@ -471,37 +521,53 @@ img{
         height: 7em;
     }
     
+    /*Markup rules*/
     #container{
         display: flex;
         flex-direction: column;
         gap:0.1em;
     }
-    #display{
-        width: 70%;
-        margin: 1em;
-    }
- 
+
     #button_and_dot{
         padding: 0.5em;
-    }
-    #small_display{
-        font-size: xx-large;
-        width: 21em;
-        height: 4em;
-    }
-    .blue_button{
-        width: 4em;
-        height: 4em;
     }
 
     #nav{
         width: 9em;
         height: 9em;
     }
+    
+    #display{
+        width: 70%;
+        margin: 1em;
+    }
+
+    #name_display{
+        height: 3em;
+        width: 25em;
+        margin: 3em;
+    }
+ 
+    #small_display{
+        font-size: xx-large;
+        width: 21em;
+        height: 4em;
+    }
+
+    /*Button rules*/
+    .blue_button{
+        width: 4em;
+        height: 4em;
+    }
 
     .nav_button{
         width: 3em;
         height: 3em;
+    }
+
+    .white_button{
+        width: 4em;
+        height: 4em;
     }
 
     #left{
@@ -511,36 +577,23 @@ img{
     #upper_left{
         box-shadow: 0em 0em 0em 0em;
     }
+
     #lower_left{
         box-shadow: 0em 0em 0em 0em;
     }
+
     #right{
         box-shadow: 0em 0em 0em 0em;
         padding: 1em;
     }
+
     #lower_right{
         box-shadow: 0em 0em 0em 0em;
     }
 
-    #name_display{
-        height: 3em;
-        width: 25em;
-        margin: 3em;
-    }
-
-    .white_button{
-        width: 4em;
-        height: 4em;
-    }
-
+    /*Type boxes*/
     .type{
         font-size: large;
-        
-
     }
 
-}
-
-
-
-  
+}  
