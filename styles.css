@@ -26,6 +26,9 @@ img{
     border:0.1em solid black;
     border-radius: 5px;
     box-shadow:  0.1em 0.1em 0.1em 0.1em black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 #display{
@@ -34,9 +37,6 @@ img{
     border-radius: 5px 5px 0px 5px;
     text-align: center;
     width: 50%;
-    position: relative;
-    top:12.5%;
-    left:12.5%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -59,13 +59,15 @@ img{
 #small_display{
     background-color: gray;
     border-radius: 5px;
-    width: 10em;
+    width: 16em;
     height: 30%;
     margin-bottom: 1em;
-    text-align: center;
-    font-size: x-large;
+    font-size:medium;
     border:0.1em solid black;
     margin-top: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #buttons{
@@ -477,15 +479,14 @@ img{
     #display{
         width: 70%;
         margin: 1em;
-        position: relative;
-        left: 7.5%;
     }
  
     #button_and_dot{
         padding: 0.5em;
     }
     #small_display{
-        width: 28em;
+        font-size: xx-large;
+        width: 21em;
         height: 4em;
     }
     .blue_button{
@@ -525,6 +526,17 @@ img{
         height: 3em;
         width: 25em;
         margin: 3em;
+    }
+
+    .white_button{
+        width: 4em;
+        height: 4em;
+    }
+
+    .type{
+        font-size: large;
+        
+
     }
 
 }

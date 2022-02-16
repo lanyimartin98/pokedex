@@ -1,7 +1,7 @@
 
 //GLobal variables
 let shiny=true;
-let chosen='weight'
+let chosen='height'
 
 const retrievePokemon=async (no)=>{
     if(no>0&&no<899){
@@ -10,12 +10,14 @@ const retrievePokemon=async (no)=>{
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${no}`);
         const pokemon = await response.json(); 
 
+        document.getElementById('name').innerHTML=`#${pokemon.id} ${capitalizeLetter(pokemon.name)}`
+
         //Resetting
-        document.getElementById('backward').onclick=function(){ }
-        document.getElementById('forward').onclick=function(){ }
         document.getElementById('small_display').innerHTML=''
         document.getElementById('prim_type').classList.remove(document.getElementById('prim_type').classList[1])
         document.getElementById('sec_type').classList.remove(document.getElementById('sec_type').classList[1])
+
+        switchChosen(pokemon);
 
         //SpriteLoadUp
         spriteLoad(pokemon)
@@ -54,60 +56,112 @@ const retrievePokemon=async (no)=>{
 
         //Other
         document.getElementById('shiny_button').onclick=function(){
+            shiny=!shiny
             spriteLoad(pokemon)
         }
 
         //Blue buttons
         document.getElementById('height').onclick=function(){
-            document.getElementById('small_display').innerHTML=`Height: ${pokemon.height}ft`
+           chosen='height'
+           switchChosen(pokemon);
         }
 
         document.getElementById('weight').onclick=function(){
-            document.getElementById('small_display').innerHTML=`Weight: ${pokemon.weight}lbs`
+            chosen='weight'
+           switchChosen(pokemon);
         }
 
         document.getElementById('hp').onclick=function(){
-            document.getElementById('small_display').innerHTML=`HP: ${pokemon.stats[0].base_stat}`
+            chosen='hp'
+           switchChosen(pokemon);
         }
 
         document.getElementById('attack').onclick=function(){
-            document.getElementById('small_display').innerHTML=`Attack: ${pokemon.stats[1].base_stat}`
+            chosen='attack'
+           switchChosen(pokemon);
         }
 
         document.getElementById('defense').onclick=function(){
-            document.getElementById('small_display').innerHTML=`Defense: ${pokemon.stats[2].base_stat}`
+            chosen='defense'
+           switchChosen(pokemon);
         }
 
         document.getElementById('special_attack').onclick=function(){
-            document.getElementById('small_display').innerHTML=`Special attack: ${pokemon.stats[3].base_stat}`
+            chosen='special_attack'
+           switchChosen(pokemon);
         }
 
         document.getElementById('special_defense').onclick=function(){
-            document.getElementById('small_display').innerHTML=`Special defense: ${pokemon.stats[4].base_stat}`
+            chosen='special_defense'
+           switchChosen(pokemon);
         }
 
         document.getElementById('speed').onclick=function(){
-            document.getElementById('small_display').innerHTML=`Speed: ${pokemon.stats[5].base_stat}`   
+            chosen='speed'
+            switchChosen(pokemon);
         }
 
         //Screen navigator
         document.getElementById('ability').onclick=function(){
-            document.getElementById('small_display').innerHTML=`Abilities: ${pokemon.abilities[0].ability.name}`
+            chosen='abilities'
+           switchChosen(pokemon);
+        }
+        document.getElementById('moves').onclick=function(){
+            chosen='moves'
+           switchChosen(pokemon);
+        }
+    }
+}
+
+const switchChosen=pokemon=>{
+    resetNavButtons()
+    switch(chosen){
+        case 'weight':
+            document.getElementById('small_display').innerHTML=`Weight: ${pokemon.weight}lbs`
+            break;
+        case 'height':
+            document.getElementById('small_display').innerHTML=`Height: ${pokemon.height}ft`
+            break;
+        case 'hp':
+            document.getElementById('small_display').innerHTML=`HP: ${pokemon.stats[0].base_stat}`
+            break;
+        case 'attack':
+            document.getElementById('small_display').innerHTML=`Attack: ${pokemon.stats[1].base_stat}`
+            break;
+        case 'defense':
+            document.getElementById('small_display').innerHTML=`Defense: ${pokemon.stats[2].base_stat}`
+            break;
+        case 'special_attack':
+            document.getElementById('small_display').innerHTML=`Special attack: ${pokemon.stats[3].base_stat}`
+            break;
+        case 'special_defense':
+            document.getElementById('small_display').innerHTML=`Special defense: ${pokemon.stats[4].base_stat}`
+            break;
+        case 'speed':
+            document.getElementById('small_display').innerHTML=`Speed: ${pokemon.stats[5].base_stat}`  
+            break;
+        case 'abilities':
+            document.getElementById('small_display').innerHTML=`Abilities: ${capitalizeLetter(pokemon.abilities[0].ability.name)}`
             document.getElementById('forward').onclick=function(){
                 moveAbilities(pokemon,1)
             }
-        }
-        document.getElementById('moves').onclick=function(){
-            document.getElementById('small_display').innerHTML=`Moves: ${pokemon.moves[0].move.name}`
+            break;
+        case 'moves':
+            document.getElementById('small_display').innerHTML=`Moves: ${capitalizeLetter(pokemon.moves[0].move.name)}`
             document.getElementById('forward').onclick=function(){
                 moveMoves(pokemon,1)
             }
-        }
+            break;
     }
 }
 
 const capitalizeLetter=word=>{
     return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+const resetNavButtons=()=>{
+    document.getElementById('backward').onclick=function(){ }
+    document.getElementById('forward').onclick=function(){ }
 }
 
 const spriteLoad=pokemon=>{
@@ -117,21 +171,19 @@ const spriteLoad=pokemon=>{
         }else{
             document.getElementById('display').innerHTML=`<img src=${pokemon.sprites.front_shiny}></img>`
         }
-        shiny=true;
     }
     else{
-        if(pokemon.sprites.shiny_default!==null){
+        if(pokemon.sprites.back_default!==null){
             document.getElementById('display').innerHTML=`<img src=${pokemon.sprites.front_default}></img><img src=${pokemon.sprites.back_default}></img>`
         }else{
             document.getElementById('display').innerHTML=`<img src=${pokemon.sprites.front_default}></img>`
         }
-         shiny=false;
     }
 }
 
 const moveAbilities=(pokemon,index)=>{
     if(pokemon.abilities.length>index&&index>=0){
-        document.getElementById('small_display').innerHTML=`Abilities: ${pokemon.abilities[index].ability.name}`
+        document.getElementById('small_display').innerHTML=`Abilities: ${capitalizeLetter(pokemon.abilities[index].ability.name)}`
         document.getElementById('forward').onclick=function(){
             moveAbilities(pokemon,index+1)
         }
@@ -143,7 +195,7 @@ const moveAbilities=(pokemon,index)=>{
 
 const moveMoves=(pokemon,index)=>{
     if(pokemon.moves.length>index&&index>=0){
-        document.getElementById('small_display').innerHTML=`Moves: ${pokemon.moves[index].move.name}`
+        document.getElementById('small_display').innerHTML=`Moves: ${capitalizeLetter(pokemon.moves[index].move.name)}`
         document.getElementById('forward').onclick=function(){
             moveMoves(pokemon,index+1)
         }
