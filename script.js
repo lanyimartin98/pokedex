@@ -167,16 +167,16 @@ const resetNavButtons=()=>{
 const spriteLoad=pokemon=>{
     if(shiny===false){
         if(pokemon.sprites.back_shiny!==null){
-            document.getElementById('display').innerHTML=`<img src=${pokemon.sprites.front_shiny}></img><img src=${pokemon.sprites.back_shiny}></img>`
+            document.getElementById('display').innerHTML=`<img src=${pokemon.sprites.front_shiny} alt=${pokemon.name}></img><img src=${pokemon.sprites.back_shiny} alt=${pokemon.name}></img>`
         }else{
-            document.getElementById('display').innerHTML=`<img src=${pokemon.sprites.front_shiny}></img>`
+            document.getElementById('display').innerHTML=`<img src=${pokemon.sprites.front_shiny} alt=${pokemon.name}></img>`
         }
     }
     else{
         if(pokemon.sprites.back_default!==null){
-            document.getElementById('display').innerHTML=`<img src=${pokemon.sprites.front_default}></img><img src=${pokemon.sprites.back_default}></img>`
+            document.getElementById('display').innerHTML=`<img src=${pokemon.sprites.front_default} alt=${pokemon.name}></img><img src=${pokemon.sprites.back_default} alt=${pokemon.name}></img>`
         }else{
-            document.getElementById('display').innerHTML=`<img src=${pokemon.sprites.front_default}></img>`
+            document.getElementById('display').innerHTML=`<img src=${pokemon.sprites.front_default} alt=${pokemon.name}></img>`
         }
     }
 }
